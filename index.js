@@ -5,9 +5,9 @@ var request = require('request');
 
 // Setup Restify Server
 var server = restify.createServer();
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-server.listen(port,ipaddress, function () {
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
+server.listen(port,ip, function () {
    console.log('%s listening to %s', server.name, server.url);
 });
 
