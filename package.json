@@ -11,9 +11,5 @@
   "dependencies": {
     "botbuilder": "^3.8.4",
     "restify": "^4.3.0"
-  },
-  "repository": {
-      "type": "git",
-      "url": "https://github.com/irshadmb/StockBotNSE"
   }
 }
