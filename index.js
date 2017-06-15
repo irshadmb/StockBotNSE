@@ -82,3 +82,5 @@ var bot = new builder.UniversalBot(connector, function (session) {
 		session.send("Please give some input");
 	}
 });
+
+module.exports = server ;
