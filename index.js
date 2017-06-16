@@ -41,51 +41,41 @@ var bot = new builder.UniversalBot(connector, function (session) {
 			{
 		    	stockSymbol = entities.entities[0].entity;
 
-		    	var stock_options = {
-							  host: "finance.google.com",
-							  port: 80,
-							  path: '/finance/info?q=BSE:'+stockSymbol,
-							  method: 'GET'
-							};
+				request('http://finance.google.com/finance/info?q='+stockSymbol, function (error, res, body) {
 
-							http.request(stock_options, function(res) {
-							  console.log('STATUS: ' + res.statusCode);
-							  console.log('HEADERS: ' + JSON.stringify(res.headers));
-							  res.setEncoding('utf8');
-							  res.on('data', function (chunk) {
-								 if(res.statusCode!='400')
-								{
-								  	chunk = chunk.substr(2);
-								  	chunk = chunk.substr(2);
-								  	stockdetails = JSON.parse(chunk);
-								  	if(stockdetails[0]!=null)
-								  	{
-							      		console.log('The current stock price of '+stockdetails[0].t+' is '+stockdetails[0].l_cur);
-							      		session.send('The current stock price of '+stockdetails[0].t+' is '+stockdetails[0].l_cur);
-								  	}
-								}
-								else
-								{
-									  console.log('Sorry, please check the stock code');
-									  session.send('Sorry, please check the stock code');
-								}
+                            if (!error && res.statusCode == 200) {
+								 console.log('STATUS: ' + res.statusCode);
+							     console.log('HEADERS: ' + JSON.stringify(res.headers));
+							     var chunk = body;
+                                 chunk = chunk.substr(2);
+                                 chunk = chunk.substr(2);
+ 
+                                 stockdetails = JSON.parse(chunk);
+                                 if(stockdetails[0]!=null)
+                                 {
+                                      console.log('The current stock price of '+stockdetails[0].t+' is '+stockdetails[0].l_cur);
+                                      session.send('The current stock price of '+stockdetails[0].t+' is '+stockdetails[0].l_cur);
+                                 }
+                            }
+                            else
+                            {
+                                  console.log('Sorry, please check the stock code');
+                                  session.send('Sorry, please check the stock code');
+                            }
+                   });
+                }
+                else
+                {
+                                session.send('Sorry, I am unable to understand.');
+                }
+          }
+          else
+          {
+                session.send('Sorry, I am unable to understand.');
+          }
+        });
 
-							  });
-							}).end();
-
-			}
-			else
-			{
-				session.send('Sorry, I am unable to understand.');
-			}
-		  }
-		});
-
-
-
-
-
-	}
+    }
 	else
 	{
 		session.send("Please give some input");
