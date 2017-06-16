@@ -44,7 +44,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
 		    	var stock_options = {
 							  host: "finance.google.com",
 							  port: 80,
-							  path: '/finance/info?client=ig&q=BSE:'+stockSymbol,
+							  path: '/finance/info?q=BSE:'+stockSymbol,
 							  method: 'GET'
 							};
 
