@@ -66,6 +66,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
 								}
 								else
 								{
+									  console.log('Sorry, please check the stock code');
 									  session.send('Sorry, please check the stock code');
 								}
 
