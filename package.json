@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node index"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Irshad Ahamed.M.B.",
+  "license": "",
   "dependencies": {
     "botbuilder": "^3.8.4",
     "restify": "^4.3.0"

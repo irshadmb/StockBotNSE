@@ -17,6 +17,14 @@ var connector = new builder.ChatConnector({
     appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 
+
+
+server.get('/index.html', function (req, res) {
+	res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+	res.send('<html><head></head><body>	<h1>Hello World</h1></body></html>');
+});
+
 // Listen for messages from users
 server.post('/api/messages', connector.listen());
 
