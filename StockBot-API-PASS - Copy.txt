@@ -1,0 +1,5 @@
+API-Key: ee70d856-6138-483f-bb41-3bcad07bb813
+Password: v6HmfCuMFNdrxcd4VgbmO1A
+
+
+LUIS: https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/748305f4-4a1d-4784-a182-ca3ecfa6ae09?subscription-key=ee68d589970542afae8ddf76b38afd4a&timezoneOffset=0&verbose=true&q=whats%20the%20price%20of%20HDFC
